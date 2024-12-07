@@ -10,23 +10,34 @@
 <body>
     <div class="container">
         <h1>Личный кабинет заказчика</h1>
-        <p>Заполните форму ниже, чтобы разместить заказ:</p>
-        <form id="orderForm">
-            <label for="taskName">Название задания</label>
-            <input type="text" id="taskName" required>
+        <p>Создайте новый заказ или отслеживайте текущие:</p>
 
-            <label for="taskDescription">Описание задания</label>
-            <textarea id="taskDescription" rows="4" required></textarea>
+        <!-- Форма создания нового заказа -->
+        <div id="create-order">
+            <h2>Создать заказ</h2>
+            <form id="orderForm">
+                <label for="taskName">Название задания</label>
+                <input type="text" id="taskName" required>
 
-            <label for="location">Местоположение</label>
-            <input type="text" id="location" required>
+                <label for="taskDescription">Описание задания</label>
+                <textarea id="taskDescription" rows="4" required></textarea>
 
-            <label for="dueDate">Дата выполнения</label>
-            <input type="date" id="dueDate" required>
+                <label for="location">Местоположение</label>
+                <input type="text" id="location" required>
 
-            <button type="submit">Разместить заказ</button>
-        </form>
-        <p id="successMessage" class="message" style="display: none;">Заказ успешно размещен!</p>
+                <label for="dueDate">Дата выполнения</label>
+                <input type="date" id="dueDate" required>
+
+                <button type="submit">Разместить заказ</button>
+            </form>
+            <p id="successMessage" class="message" style="display: none;">Заказ успешно размещен!</p>
+        </div>
+
+        <!-- Список текущих заказов -->
+        <div id="orders-list">
+            <h2>Мои заказы</h2>
+            <ul id="orders"></ul>
+        </div>
     </div>
 </body>
 </html>
