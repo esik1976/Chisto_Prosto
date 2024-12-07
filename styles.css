@@ -78,36 +78,43 @@ input {
 /* Контейнер для таблицы */
 #orders-list {
     overflow-x: auto; /* Добавляем горизонтальную прокрутку, если таблица шире контейнера */
+    max-width: 100%; /* Ограничиваем ширину контейнера таблицы */
     margin-top: 20px;
+    box-sizing: border-box; /* Учитываем отступы внутри контейнера */
 }
 
 /* Таблица */
 table {
-    width: 100%; /* Устанавливаем ширину таблицы в 100% контейнера */
+    width: 100%; /* Таблица занимает всю ширину контейнера */
+    max-width: 100%; /* Ограничиваем ширину таблицы */
     border-collapse: collapse; /* Убираем двойные границы */
     font-size: 14px;
+    text-align: left;
 }
 
 table th, table td {
+    border: 1px solid #ddd;
     padding: 10px;
-    text-align: left;
-    border: 1px solid #ddd; /* Добавляем рамки для ячеек */
 }
 
 table th {
-    background-color: #f4f4f4; /* Фон для заголовков */
+    background-color: #f4f4f4;
     font-weight: bold;
-    text-align: center; /* Центрируем заголовки */
+    text-align: center;
 }
 
 table tr:nth-child(even) {
-    background-color: #f9f9f9; /* Чередуем цвета строк */
+    background-color: #f9f9f9;
 }
 
 table tr:hover {
-    background-color: #f1f1f1; /* Подсветка строки при наведении */
+    background-color: #f1f1f1;
 }
 
-table td:nth-child(1), table th:nth-child(1) {
-    text-align: center; /* Центрируем столбец с номерами */
+/* Добавляем адаптивность */
+@media (max-width: 768px) {
+    table th, table td {
+        font-size: 12px; /* Уменьшаем шрифт для маленьких экранов */
+        padding: 8px;
+    }
 }
