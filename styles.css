@@ -1,25 +1,83 @@
-/* Контейнер */
-.container {
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* Светло-голубой фон */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     text-align: center;
-    margin-top: 50px;
 }
 
-/* Кнопки выбора роли */
-.role-selection {
-    margin-top: 20px;
+.container {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
 }
 
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Кнопки */
 button {
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 18px;
+    background-color: #4CAF50; /* Зеленый */
     color: white;
-    background-color: #4CAF50;
     border: none;
     border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #45a049; /* Темно-зеленый */
+}
+
+button:disabled {
+    background-color: #ccc; /* Серый для отключенных кнопок */
+    cursor: not-allowed;
+}
+
+/* Формы */
+form {
+    text-align: left;
+}
+
+label {
+    font-size: 14px;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Сообщения */
+.message {
+    font-size: 14px;
+    color: #777;
+    margin-top: 10px;
 }
