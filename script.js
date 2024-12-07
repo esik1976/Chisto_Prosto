@@ -1,15 +1,12 @@
-document.getElementById('registrationForm').addEventListener('submit', function (e) {
-    e.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
+    // Проверяем, есть ли пользовательские данные в localStorage
+    const isRegistered = localStorage.getItem('registered');
 
-    // Получаем значения из формы
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    // Имитация успешной регистрации
-    console.log('Данные для регистрации:');
-    console.log({ name, email, password });
-
-    // Показываем сообщение об успехе
-    alert('Регистрация успешна! Данные отправлены в консоль.');
+    if (isRegistered) {
+        // Пользователь зарегистрирован — перенаправляем на страницу входа
+        window.location.href = 'login.html';
+    } else {
+        // Пользователь не зарегистрирован — перенаправляем на страницу регистрации
+        window.location.href = 'register.html';
+    }
 });
