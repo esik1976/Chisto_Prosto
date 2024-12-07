@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'customer.html';
     });
 
-    // Здесь можно добавить обработчик для кнопки "Я исполнитель"
+    // Переход на страницу исполнителя
     executorBtn.addEventListener('click', () => {
-        alert('Функционал для исполнителей пока в разработке.');
+        window.location.href = 'executor.html';
     });
 });
