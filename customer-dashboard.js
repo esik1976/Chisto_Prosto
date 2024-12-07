@@ -1,29 +1,43 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const orderForm = document.getElementById('orderForm');
-    const successMessage = document.getElementById('successMessage');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет заказчика</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="customer-dashboard.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Личный кабинет заказчика</h1>
+        <p>Создайте новый заказ или отслеживайте текущие:</p>
 
-    // Обработка формы заказа
-    orderForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+        <!-- Форма создания нового заказа -->
+        <div id="create-order">
+            <h2>Создать заказ</h2>
+            <form id="orderForm">
+                <label for="taskName">Название задания</label>
+                <input type="text" id="taskName" required>
 
-        const taskName = document.getElementById('taskName').value;
-        const taskDescription = document.getElementById('taskDescription').value;
-        const location = document.getElementById('location').value;
-        const dueDate = document.getElementById('dueDate').value;
+                <label for="taskDescription">Описание задания</label>
+                <textarea id="taskDescription" rows="4" required></textarea>
 
-        // Сохраняем заказ в localStorage
-        const orders = JSON.parse(localStorage.getItem('customer_orders')) || [];
-        orders.push({ taskName, taskDescription, location, dueDate });
-        localStorage.setItem('customer_orders', JSON.stringify(orders));
+                <label for="location">Местоположение</label>
+                <input type="text" id="location" required>
 
-        // Показываем сообщение об успешном размещении заказа
-        successMessage.style.display = 'block';
+                <label for="dueDate">Дата выполнения</label>
+                <input type="date" id="dueDate" required>
 
-        // Очищаем форму
-        orderForm.reset();
+                <button type="submit">Разместить заказ</button>
+            </form>
+            <p id="successMessage" class="message" style="display: none;">Заказ успешно размещен!</p>
+        </div>
 
-        setTimeout(() => {
-            successMessage.style.display = 'none';
-        }, 3000);
-    });
-});
+        <!-- Список текущих заказов -->
+        <div id="orders-list">
+            <h2>Мои заказы</h2>
+            <ul id="orders"></ul>
+        </div>
+    </div>
+</body>
+</html>
