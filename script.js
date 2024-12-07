@@ -1,19 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Скрипт работает!');
-
     const customerBtn = document.getElementById('customerBtn');
     const executorBtn = document.getElementById('executorBtn');
 
-    if (!customerBtn || !executorBtn) {
-        console.error('Кнопки не найдены.');
-        return;
-    }
-
+    // Переход на страницу заказчика
     customerBtn.addEventListener('click', () => {
-        console.log('Кнопка "Я заказчик" нажата.');
+        window.location.href = 'customer.html';
     });
 
+    // Здесь можно добавить обработчик для кнопки "Я исполнитель"
     executorBtn.addEventListener('click', () => {
-        console.log('Кнопка "Я исполнитель" нажата.');
+        alert('Функционал для исполнителей пока в разработке.');
     });
 });
