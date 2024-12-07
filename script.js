@@ -2,26 +2,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const customerBtn = document.getElementById('customerBtn');
     const executorBtn = document.getElementById('executorBtn');
 
-    console.log('Проверяем кнопки:');
-    console.log('customerBtn:', customerBtn);
-    console.log('executorBtn:', executorBtn);
+    console.log('Тестовый код: кнопки подключены.');
 
-    if (!customerBtn || !executorBtn) {
-        console.error('Кнопки не найдены. Проверьте их ID в HTML.');
-        return;
+    if (customerBtn) {
+        customerBtn.addEventListener('click', () => {
+            console.log('Кнопка "Я заказчик" нажата.');
+        });
     }
 
-    // Обработчик для кнопки "Я заказчик"
-    customerBtn.addEventListener('click', () => {
-        console.log('Выбрана роль: заказчик');
-        localStorage.setItem('role', 'customer');
-        window.location.reload();
-    });
-
-    // Обработчик для кнопки "Я исполнитель"
-    executorBtn.addEventListener('click', () => {
-        console.log('Выбрана роль: исполнитель');
-        localStorage.setItem('role', 'executor');
-        window.location.reload();
-    });
+    if (executorBtn) {
+        executorBtn.addEventListener('click', () => {
+            console.log('Кнопка "Я исполнитель" нажата.');
+        });
+    }
 });
