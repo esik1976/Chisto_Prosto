@@ -1,43 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Личный кабинет заказчика</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="customer-dashboard.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h1>Личный кабинет заказчика</h1>
-        <p>Создайте новый заказ или отслеживайте текущие:</p>
+document.addEventListener('DOMContentLoaded', () => {
+    const orderForm = document.getElementById('orderForm');
+    const successMessage = document.getElementById('successMessage');
+    const ordersList = document.getElementById('orders');
 
-        <!-- Форма создания нового заказа -->
-        <div id="create-order">
-            <h2>Создать заказ</h2>
-            <form id="orderForm">
-                <label for="taskName">Название задания</label>
-                <input type="text" id="taskName" required>
+    // Функция для загрузки заказов
+    function loadOrders() {
+        const orders = JSON.parse(localStorage.getItem('customer_orders')) || [];
+        ordersList.innerHTML = '';
 
-                <label for="taskDescription">Описание задания</label>
-                <textarea id="taskDescription" rows="4" required></textarea>
+        if (orders.length === 0) {
+            ordersList.innerHTML = '<li>Заказов пока нет.</li>';
+            return;
+        }
 
-                <label for="location">Местоположение</label>
-                <input type="text" id="location" required>
+        orders.forEach((order, index) => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <strong>${order.taskName}</strong> - ${order.taskDescription} <br>
+                <em>Местоположение:</em> ${order.location}, <em>Дата выполнения:</em> ${order.dueDate} <br>
+                <em>Исполнитель:</em> ${order.executor ? order.executor : 'Еще никто не взял'}
+            `;
+            li.style.marginBottom = '15px';
+            ordersList.appendChild(li);
+        });
+    }
 
-                <label for="dueDate">Дата выполнения</label>
-                <input type="date" id="dueDate" required>
+    // Загрузка заказов при загрузке страницы
+    loadOrders();
 
-                <button type="submit">Разместить заказ</button>
-            </form>
-            <p id="successMessage" class="message" style="display: none;">Заказ успешно размещен!</p>
-        </div>
+    // Обработка формы создания заказа
+    orderForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-        <!-- Список текущих заказов -->
-        <div id="orders-list">
-            <h2>Мои заказы</h2>
-            <ul id="orders"></ul>
-        </div>
-    </div>
-</body>
-</html>
+        const taskName = document.getElementById('taskName').value;
+        const taskDescription = document.getElementById('taskDescription').value;
+        const location = document.getElementById('location').value;
+        const dueDate = document.getElementById('dueDate').value;
+
+        const orders = JSON.parse(localStorage.getItem('customer_orders')) || [];
+        orders.push({ taskName, taskDescription, location, dueDate, executor: null });
+        localStorage.setItem('customer_orders', JSON.stringify(orders));
+
+        successMessage.style.display = 'block';
+        orderForm.reset();
+
+        // Скрываем сообщение через 3 секунды
+        setTimeout(() => {
+            successMessage.style.display = 'none';
+        }, 3000);
+
+        // Обновляем список заказов
+        loadOrders();
+    });
+});
