@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Функция для загрузки заказов
     function loadOrders() {
         const orders = JSON.parse(localStorage.getItem('customer_orders')) || [];
+        console.log('Загружаемые заказы:', orders); // Отладочная информация
         ordersList.innerHTML = '';
 
         if (orders.length === 0) {
@@ -41,15 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
         orders.push({ taskName, taskDescription, location, dueDate, executor: null });
         localStorage.setItem('customer_orders', JSON.stringify(orders));
 
+        console.log('Сохраненные заказы после добавления:', orders);
+
         successMessage.style.display = 'block';
         orderForm.reset();
 
-        // Скрываем сообщение через 3 секунды
         setTimeout(() => {
             successMessage.style.display = 'none';
         }, 3000);
 
-        // Обновляем список заказов
-        loadOrders();
+        loadOrders(); // Обновляем список заказов
     });
 });
