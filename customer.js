@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (email === storedEmail && password === storedPassword) {
                 alert('Вход выполнен успешно!');
-                // Перенаправляем в личный кабинет
+                // Перенаправляем в личный кабинет заказчика
                 window.location.href = 'customer-dashboard.html';
             } else {
                 alert('Неверный email или пароль!');
