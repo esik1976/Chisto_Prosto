@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет заказчика</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="customer-dashboard.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Личный кабинет заказчика</h1>
+        <p>Заполните форму ниже, чтобы разместить заказ:</p>
+        <form id="orderForm">
+            <label for="taskName">Название задания</label>
+            <input type="text" id="taskName" required>
+
+            <label for="taskDescription">Описание задания</label>
+            <textarea id="taskDescription" rows="4" required></textarea>
+
+            <label for="location">Местоположение</label>
+            <input type="text" id="location" required>
+
+            <label for="dueDate">Дата выполнения</label>
+            <input type="date" id="dueDate" required>
+
+            <button type="submit">Разместить заказ</button>
+        </form>
+        <p id="successMessage" class="message" style="display: none;">Заказ успешно размещен!</p>
+    </div>
+</body>
+</html>
