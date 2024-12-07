@@ -1,4 +1,4 @@
-document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+document.getElementById('registrationForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
     // Получаем значения из формы
@@ -6,20 +6,10 @@ document.getElementById('registrationForm').addEventListener('submit', async fun
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    // Отправка данных на сервер
-    const response = await fetch('/register', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ name, email, password })
-    });
+    // Имитация успешной регистрации
+    console.log('Данные для регистрации:');
+    console.log({ name, email, password });
 
-    // Обработка ответа
-    const result = await response.json();
-    if (result.success) {
-        alert('Регистрация успешна!');
-    } else {
-        alert('Ошибка регистрации: ' + result.message);
-    }
+    // Показываем сообщение об успехе
+    alert('Регистрация успешна! Данные отправлены в консоль.');
 });
