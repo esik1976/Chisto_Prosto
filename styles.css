@@ -75,32 +75,39 @@ input {
     font-size: 14px;
 }
 
-/* Таблица */
-table {
-    width: 100%;
-    border-collapse: collapse;
+/* Контейнер для таблицы */
+#orders-list {
+    overflow-x: auto; /* Добавляем горизонтальную прокрутку, если таблица шире контейнера */
     margin-top: 20px;
 }
 
+/* Таблица */
+table {
+    width: 100%; /* Устанавливаем ширину таблицы в 100% контейнера */
+    border-collapse: collapse; /* Убираем двойные границы */
+    font-size: 14px;
+}
+
 table th, table td {
-    border: 1px solid #ddd;
     padding: 10px;
     text-align: left;
+    border: 1px solid #ddd; /* Добавляем рамки для ячеек */
 }
 
 table th {
-    background-color: #f4f4f4;
+    background-color: #f4f4f4; /* Фон для заголовков */
     font-weight: bold;
+    text-align: center; /* Центрируем заголовки */
 }
 
 table tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Чередуем цвета строк */
 }
 
 table tr:hover {
-    background-color: #f1f1f1;
+    background-color: #f1f1f1; /* Подсветка строки при наведении */
 }
 
 table td:nth-child(1), table th:nth-child(1) {
-    text-align: center; /* Центрируем номер заказа */
+    text-align: center; /* Центрируем столбец с номерами */
 }
