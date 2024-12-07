@@ -1,12 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Проверяем, есть ли пользовательские данные в localStorage
+    // Проверяем, зарегистрирован ли пользователь
     const isRegistered = localStorage.getItem('registered');
 
     if (isRegistered) {
-        // Пользователь зарегистрирован — перенаправляем на страницу входа
-        window.location.href = 'login.html';
+        // Перенаправляем на страницу входа
+        console.log('Пользователь зарегистрирован. Перенаправляем на страницу входа.');
+        window.location.href = './login.html';
     } else {
-        // Пользователь не зарегистрирован — перенаправляем на страницу регистрации
-        window.location.href = 'register.html';
+        // Перенаправляем на страницу регистрации
+        console.log('Пользователь не зарегистрирован. Перенаправляем на страницу регистрации.');
+        window.location.href = './register.html';
     }
 });
